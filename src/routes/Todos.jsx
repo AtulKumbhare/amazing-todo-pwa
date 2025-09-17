@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import localforage from "localforage";
 
 // API_BASE and localForage helpers (lfGetPending, lfSetPending, etc.)
-const API_BASE = "http://localhost:4000/api";
+const API_BASE = "https://amazing-task-backend.onrender.com/api";
 
 async function lfGetPending() {
   return (await localforage.getItem("pending")) || [];
