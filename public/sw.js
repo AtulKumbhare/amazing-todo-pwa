@@ -1,9 +1,5 @@
 const CACHE_NAME = 'todo-cache-v1';
-const APP_SHELL = [
-  '/',
-  '/index.html',
-  '/manifest.webmanifest',
-];
+const APP_SHELL = ["/", "/index.html", "/index.css", "/manifest.webmanifest"];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(
@@ -55,48 +51,3 @@ self.addEventListener('fetch', (event) => {
     );
   }
 });
-
-
-// self.addEventListener("fetch", (event) => {
-//   const request = event.request;
-
-//   // If it's an API request
-//   if (request.url.includes("/api/todos")) {
-//     event.respondWith(networkFirst(request));
-//   } else {
-//     // Handle other requests with cache-first strategy
-//     event.respondWith(cacheFirst(request));
-//   }
-// });
-
-// // Cache-first strategy for static files
-// async function cacheFirst(request) {
-//   const cached = await caches.match(request);
-//   if (cached) {
-//     return cached;
-//   }
-//   const response = await fetch(request);
-//   const cache = await caches.open(CACHE_NAME);
-//   cache.put(request, response.clone());
-//   return response;
-// }
-
-// // Network-first strategy for API requests
-// async function networkFirst(request) {
-//   try {
-//     console.log('request', request)
-//     const response = await fetch(request);
-//     console.log('fetched from network:', response);
-//     const cache = await caches.open(CACHE_NAME);
-//     cache.put(request, response.clone());
-//     return response;
-//   } catch (error) {
-//     const cached = await caches.match(request);
-//     if (cached) {
-//       return cached;
-//     }
-//     return caches.match("/offline.html");
-//   }
-// }
-
-
